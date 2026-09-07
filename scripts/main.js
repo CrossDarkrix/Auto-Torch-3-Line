@@ -22,9 +22,7 @@ world.afterEvents.itemUseOn.subscribe((event) => {
         const last =
             lastAutoPlace.get(player.id) ?? 0;
 
-        if (
-            now - last < COOLDOWN_MS
-        ) {
+        if (now - last < COOLDOWN_MS) {
             return;
         }
 
@@ -114,13 +112,36 @@ world.afterEvents.itemUseOn.subscribe((event) => {
                     z
                 });
 
+            const floorBlock =
+                dim.getBlock({
+                    x,
+                    y: y - 1,
+                    z
+                });
+
             if (!placeBlock) {
                 break;
             }
 
+            if (!floorBlock) {
+                break;
+            }
+
+            // 空気以外なら停止
             if (
                 placeBlock.typeId !==
                 "minecraft:air"
+            ) {
+                break;
+            }
+
+            // 水・溶岩の上は禁止
+            const floorId =
+                floorBlock.typeId;
+
+            if (
+                floorId.includes("water") ||
+                floorId.includes("lava")
             ) {
                 break;
             }
@@ -184,7 +205,7 @@ world.afterEvents.itemUseOn.subscribe((event) => {
             `Placed: ${placed}`
         );
 
-    } catch {
+    } catch (e) {
 
         msg(
             player,

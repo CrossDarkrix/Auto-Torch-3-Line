@@ -1,9 +1,9 @@
 {
   "format_version": 2,
   "header": {
-    "name": "Auto Torch 3 LineV5",
+    "name": "Auto Torch 3 LineV6",
     "description": "Sneak + use torch on ground to place torches every 3 blocks in a line.",
-    "uuid": "cce3d335-233e-4a62-a4b1-6488312066f7",
+    "uuid": "aa89c984-d6db-4609-98d5-d0e5106cc10c",
     "version": [
       1,
       0,
@@ -19,7 +19,7 @@
     {
       "type": "script",
       "language": "javascript",
-      "uuid": "aabd812c-c375-48d6-86bb-2e8d0e551ef4",
+      "uuid": "8bdf7a2a-9a03-4cd8-8f0e-a5f3445ad8e3",
       "version": [
         1,
         0,
