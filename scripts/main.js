@@ -127,7 +127,7 @@ world.afterEvents.itemUseOn.subscribe((event) => {
                 break;
             }
 
-            // 空気以外なら停止
+            // 設置先は空気のみ
             if (
                 placeBlock.typeId !==
                 "minecraft:air"
@@ -135,9 +135,21 @@ world.afterEvents.itemUseOn.subscribe((event) => {
                 break;
             }
 
-            // 水・溶岩の上は禁止
+            // 地面チェック
             const floorId =
                 floorBlock.typeId;
+
+            const forbidden = [
+                "minecraft:air",
+                "minecraft:cave_air",
+                "minecraft:void_air"
+            ];
+
+            if (
+                forbidden.includes(floorId)
+            ) {
+                break;
+            }
 
             if (
                 floorId.includes("water") ||
